@@ -20,13 +20,11 @@ if(!empty($_REQUEST['param'])){
     $inicio = ($qtdMaxPorPag * $paginaAtual) - $qtdMaxPorPag;
 
     $_SESSION['totalPaginas'] = $totalPaginas;
-   
     
-    $ORDEM = "ORDER BY idprod";
+    $ORDEM = "ORDER BY idprod ASC";
     $LIMIT = "LIMIT $inicio, $qtdMaxPorPag";
     
-
-$sql2 = $Conection->conexao->query("SELECT * FROM produtos {$LIMIT}");
+    $sql2 = $Conection->conexao->query("SELECT * FROM produtos {$ORDEM} {$LIMIT}");
     $dados2 = Array($sql2->fetchAll(\PDO::FETCH_ASSOC));
     $qtdRegistros2 = array($sql2->rowCount(\PDO::FETCH_ASSOC));
     $totalRegistros2 = implode($qtdRegistros2);
