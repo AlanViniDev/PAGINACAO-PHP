@@ -19,7 +19,9 @@
 <center>
 <?php
  session_start();
+ if(!empty($_SESSION['pagina']){
  $_SESSION['pagina'] = $_GET['pagina'];
+ }
  for($i = 1; $i <= $_SESSION['totalPaginas']; $i++){
     echo  "<a href = 'index.php?pagina=$i' class = 'paginacao' >" .$i. "</a>";
 }
